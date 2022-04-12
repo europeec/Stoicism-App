@@ -20,6 +20,13 @@
 		2CAF7C742805CBDB007B4817 /* MainModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C6E2805CBDB007B4817 /* MainModuleViewController.swift */; };
 		2CAF7C752805CBDB007B4817 /* MainModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C6F2805CBDB007B4817 /* MainModuleInteractor.swift */; };
 		2CAF7C7728061166007B4817 /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7628061166007B4817 /* QuoteView.swift */; };
+		2CAF7C802806367C007B4817 /* DetailModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7A2806367C007B4817 /* DetailModulePresenter.swift */; };
+		2CAF7C812806367C007B4817 /* DetailModuleWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7B2806367C007B4817 /* DetailModuleWorker.swift */; };
+		2CAF7C822806367C007B4817 /* DetailModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7C2806367C007B4817 /* DetailModuleRouter.swift */; };
+		2CAF7C832806367C007B4817 /* DetailModuleModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7D2806367C007B4817 /* DetailModuleModels.swift */; };
+		2CAF7C842806367C007B4817 /* DetailModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7E2806367C007B4817 /* DetailModuleViewController.swift */; };
+		2CAF7C852806367C007B4817 /* DetailModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7F2806367C007B4817 /* DetailModuleInteractor.swift */; };
+		2CAF7C8728063BE4007B4817 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C8628063BE4007B4817 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		2CAF7C6E2805CBDB007B4817 /* MainModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewController.swift; sourceTree = "<group>"; };
 		2CAF7C6F2805CBDB007B4817 /* MainModuleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleInteractor.swift; sourceTree = "<group>"; };
 		2CAF7C7628061166007B4817 /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		2CAF7C7A2806367C007B4817 /* DetailModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModulePresenter.swift; sourceTree = "<group>"; };
+		2CAF7C7B2806367C007B4817 /* DetailModuleWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleWorker.swift; sourceTree = "<group>"; };
+		2CAF7C7C2806367C007B4817 /* DetailModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleRouter.swift; sourceTree = "<group>"; };
+		2CAF7C7D2806367C007B4817 /* DetailModuleModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleModels.swift; sourceTree = "<group>"; };
+		2CAF7C7E2806367C007B4817 /* DetailModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleViewController.swift; sourceTree = "<group>"; };
+		2CAF7C7F2806367C007B4817 /* DetailModuleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleInteractor.swift; sourceTree = "<group>"; };
+		2CAF7C8628063BE4007B4817 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +87,7 @@
 				2CAF7C552805CB8B007B4817 /* AppDelegate.swift */,
 				2CAF7C572805CB8B007B4817 /* SceneDelegate.swift */,
 				2CAF7C782806155F007B4817 /* Common */,
+				2CAF7C7928063642007B4817 /* DetailModule */,
 				2CAF7C692805CBBB007B4817 /* MainModule */,
 				2CAF7C592805CB8B007B4817 /* ViewController.swift */,
 				2CAF7C5B2805CB8B007B4817 /* Main.storyboard */,
@@ -100,8 +115,22 @@
 			isa = PBXGroup;
 			children = (
 				2CAF7C7628061166007B4817 /* QuoteView.swift */,
+				2CAF7C8628063BE4007B4817 /* NetworkError.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		2CAF7C7928063642007B4817 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				2CAF7C7A2806367C007B4817 /* DetailModulePresenter.swift */,
+				2CAF7C7B2806367C007B4817 /* DetailModuleWorker.swift */,
+				2CAF7C7C2806367C007B4817 /* DetailModuleRouter.swift */,
+				2CAF7C7D2806367C007B4817 /* DetailModuleModels.swift */,
+				2CAF7C7E2806367C007B4817 /* DetailModuleViewController.swift */,
+				2CAF7C7F2806367C007B4817 /* DetailModuleInteractor.swift */,
+			);
+			path = DetailModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,14 +204,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CAF7C8728063BE4007B4817 /* NetworkError.swift in Sources */,
 				2CAF7C5A2805CB8B007B4817 /* ViewController.swift in Sources */,
 				2CAF7C7728061166007B4817 /* QuoteView.swift in Sources */,
+				2CAF7C812806367C007B4817 /* DetailModuleWorker.swift in Sources */,
+				2CAF7C802806367C007B4817 /* DetailModulePresenter.swift in Sources */,
 				2CAF7C752805CBDB007B4817 /* MainModuleInteractor.swift in Sources */,
 				2CAF7C732805CBDB007B4817 /* MainModuleModels.swift in Sources */,
 				2CAF7C722805CBDB007B4817 /* MainModuleRouter.swift in Sources */,
 				2CAF7C742805CBDB007B4817 /* MainModuleViewController.swift in Sources */,
 				2CAF7C712805CBDB007B4817 /* MainModuleWorker.swift in Sources */,
+				2CAF7C842806367C007B4817 /* DetailModuleViewController.swift in Sources */,
 				2CAF7C562805CB8B007B4817 /* AppDelegate.swift in Sources */,
+				2CAF7C852806367C007B4817 /* DetailModuleInteractor.swift in Sources */,
+				2CAF7C832806367C007B4817 /* DetailModuleModels.swift in Sources */,
+				2CAF7C822806367C007B4817 /* DetailModuleRouter.swift in Sources */,
 				2CAF7C582805CB8B007B4817 /* SceneDelegate.swift in Sources */,
 				2CAF7C702805CBDB007B4817 /* MainModulePresenter.swift in Sources */,
 			);

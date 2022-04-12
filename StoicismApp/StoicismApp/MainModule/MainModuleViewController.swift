@@ -64,6 +64,9 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
         
         view.backgroundColor = .systemBackground
         view.addSubview(quoteView)
+        
+        let tapRegocginzer = UITapGestureRecognizer(target: self, action: #selector(tappedOnView))
+        view.addGestureRecognizer(tapRegocginzer)
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,7 +79,7 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
                                              constant: -2 * Constant.paddingQuote)
         ])
     }
-        
+    
     private func getQuote() {
         let request = MainModule.ShowQuote.Request()
         interactor?.getQuote(request: request)
@@ -91,5 +94,9 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
         if motion == .motionShake {
             getQuote()
         }
+    }
+    
+    @objc private func tappedOnView() {
+        router?.routeToDetail()
     }
 }

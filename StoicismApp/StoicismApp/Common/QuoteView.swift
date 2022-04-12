@@ -6,7 +6,7 @@ final class QuoteView: UIView {
         static let quoteImageViewSide: CGFloat = 15
         static let padding: CGFloat = 7
     }
-    
+
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.lineBreakMode = .byWordWrapping
@@ -14,7 +14,7 @@ final class QuoteView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -24,10 +24,10 @@ final class QuoteView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var openQuote = makeImageView(systemName: "quote.opening")
     private lazy var closedQuote = makeImageView(systemName: "quote.closing")
-    
+
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -37,12 +37,12 @@ final class QuoteView: UIView {
         addSubview(openQuote)
         addSubview(closedQuote)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         return nil
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -53,7 +53,7 @@ final class QuoteView: UIView {
             
             textLabel.leadingAnchor.constraint(equalTo: openQuote.trailingAnchor, constant: Constant.padding),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textLabel.topAnchor.constraint(equalTo: topAnchor),
+            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constant.padding),
             
             closedQuote.bottomAnchor.constraint(equalTo: bottomAnchor),
             closedQuote.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -62,9 +62,7 @@ final class QuoteView: UIView {
             authorLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor),
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             authorLabel.trailingAnchor.constraint(equalTo: closedQuote.leadingAnchor, constant: -Constant.padding),
-            authorLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-            
-            
+            authorLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constant.padding)
         ])
     }
     
@@ -72,7 +70,7 @@ final class QuoteView: UIView {
         authorLabel.text = quote.author
         textLabel.text = quote.text
     }
-    
+
     private func makeImageView(systemName: String) -> UIImageView {
         let image = UIImage(systemName: systemName)
         let imageView = UIImageView(image: image)

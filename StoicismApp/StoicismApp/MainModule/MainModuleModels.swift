@@ -12,17 +12,14 @@ struct Quote: Decodable {
 
 enum MainModule {
   enum ShowQuote {
-    struct Request {}
+      struct Request {}
 
-    struct Response {
-        var quoteResult: Result<QuoteResponse, Error>
-        struct QuoteResponse: Decodable {
-            let data: Quote
-        }
-    }
+      struct Response: Decodable {
+          let data: Quote
+      }
 
-    struct ViewModel {
-        var quote: Quote
-    }
+      struct ViewModel {
+          var quote: Quote
+      }
   }
 }
