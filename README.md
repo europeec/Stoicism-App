@@ -1,1 +1,1 @@
-# WordApp
+# Stoicism App
