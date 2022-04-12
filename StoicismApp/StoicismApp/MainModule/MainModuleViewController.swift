@@ -9,16 +9,14 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
         static let paddingQuote: CGFloat = 15
     }
     
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
     var interactor: MainModuleBusinessLogic?
     var router: (NSObjectProtocol & MainModuleRoutingLogic & MainModuleDataPassing)?
     
-    private lazy var quoteLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        return label
-    }()
+    private lazy var quoteView = QuoteView()
     
     // MARK: Object lifecycle
     
@@ -64,16 +62,18 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
         super.viewDidLoad()
         getQuote()
         
-        view.addSubview(quoteLabel)
+        view.backgroundColor = .systemBackground
+        view.addSubview(quoteView)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         NSLayoutConstraint.activate([
-            quoteLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            quoteLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            quoteLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * Constant.paddingQuote)
+            quoteView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            quoteView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            quoteView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor,
+                                             constant: -2 * Constant.paddingQuote)
         ])
     }
         
@@ -84,11 +84,12 @@ final class MainModuleViewController: UIViewController, MainModuleDisplayLogic {
     
     func displayQuote(viewModel: MainModule.ShowQuote.ViewModel) {
         let quote = viewModel.quote
-        let author = quote.author
-        let text = quote.text
-        
-        DispatchQueue.main.async {
-            self.quoteLabel.text = author + " " + text
+        quoteView.displayQuote(quote)
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
+        if motion == .motionShake {
+            getQuote()
         }
     }
 }
