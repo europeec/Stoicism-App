@@ -8,8 +8,6 @@ protocol DetailModulePresentationLogic {
 final class DetailModulePresenter: DetailModulePresentationLogic {
     weak var viewController: DetailModuleDisplayLogic?
     
-    // MARK: Do something
-    
     func presentImage(response: DetailModule.Detail.Response, quote: Quote) {
         DispatchQueue.main.async { [weak self] in
             let image = response.image
