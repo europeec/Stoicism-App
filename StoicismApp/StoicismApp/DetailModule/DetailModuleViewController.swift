@@ -6,8 +6,31 @@ protocol DetailModuleDisplayLogic: AnyObject {
 }
 
 final class DetailModuleViewController: UIViewController, DetailModuleDisplayLogic {
+    private enum Constant {
+        static let padding: CGFloat = 10
+    }
+
     var interactor: DetailModuleBusinessLogic?
     var router: (NSObjectProtocol & DetailModuleRoutingLogic & DetailModuleDataPassing)?
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode = .scaleToFill
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        blurView.frame = imageView.frame
+        imageView.addSubview(blurView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var quoteView = QuoteView()
     
     // MARK: Object lifecycle
     
@@ -53,6 +76,33 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
     override func viewDidLoad() {
         super.viewDidLoad()
         getImage()
+        
+        view.backgroundColor = .clear
+        view.addSubview(backgroundImageView)
+        view.addSubview(imageView)
+        view.addSubview(quoteView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor,
+                                               constant: Constant.padding),
+            imageView.trailingAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor,
+                                                constant: -Constant.padding),
+            imageView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor,
+                                           constant: Constant.padding),
+            imageView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                              constant: -Constant.padding),
+
+            quoteView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor,
+                                             constant: -2 * Constant.padding)
+            
+        ])
+        
+        imageView.center = view.center
+        quoteView.center = view.center
     }
     
     
@@ -63,7 +113,12 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
     }
     
     func display(viewModel: DetailModule.Detail.ViewModel) {
-        print(viewModel)
+        let image = viewModel.image
+        let quote = viewModel.quote
+        
+        backgroundImageView.image = image
+        imageView.image = image
+        quoteView.displayQuote(quote)
     }
     
     func loading() {

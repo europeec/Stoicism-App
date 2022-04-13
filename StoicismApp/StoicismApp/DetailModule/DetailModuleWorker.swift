@@ -18,7 +18,8 @@ final class DetailModuleWorker {
     func downloadImage(request: DetailModule.Detail.Request,
                        completion: @escaping(Result<DetailModule.Detail.Response, Error>) -> Void) {
         let endPoint = "stoicism \(request.author)"
-        guard let url = URL(string: Constant.urlString.appending(endPoint)) else {
+        let urlString = Constant.urlString.appending(endPoint).replacingOccurrences(of: " ", with: "%20")
+        guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalideURL))
             return
         }
