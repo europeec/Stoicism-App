@@ -14,14 +14,13 @@ final class DetailModuleInteractor: DetailModuleBusinessLogic, DetailModuleDataS
     var quote: Quote = .init(author: "", text: "")
     
     var presenter: DetailModulePresentationLogic?
-    var worker: DetailModuleWorker?
+    private let worker = DetailModuleWorker.shared
 
     func downloadImage(request: DetailModule.Detail.Request) {
         guard let presenter = presenter else { return }
         presenter.loading()
-        
-        worker = DetailModuleWorker()
-        worker?.downloadImage(request: request) { [weak self] result in
+
+        worker.downloadImage(request: request) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):

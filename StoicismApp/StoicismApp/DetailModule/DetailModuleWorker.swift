@@ -15,6 +15,10 @@ final class DetailModuleWorker {
         static let urlString = "https://imsea.herokuapp.com/api/1?q="
     }
     
+    static let shared = DetailModuleWorker()
+
+    private var imageCache = NSCache<NSString, AnyObject>()
+    
     func downloadImage(request: DetailModule.Detail.Request,
                        completion: @escaping(Result<DetailModule.Detail.Response, Error>) -> Void) {
         let endPoint = "stoicism \(request.author)"
@@ -24,38 +28,45 @@ final class DetailModuleWorker {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            guard let data = data else {
-                completion(.failure(NetworkError.dataNil))
-                return
-            }
-            
-            do {
-                let dataImages = try JSONDecoder().decode(ImageNetworkWorkerModel.self, from: data)
-                if let imageURL = dataImages.results.first {
-                    self?.downloadImage(from: imageURL) { result in
-                        switch result {
-                        case .success(let image):
-                            let response = DetailModule.Detail.Response(image: image)
-                            completion(.success(response))
-                        case .failure(let error):
-                            completion(.failure(error))
-                        }
-                        
-                    }
-                } else {
-                    completion(.failure(NetworkError.invalideURL))
+        if let cachedImage = self.imageCache.object(forKey: urlString as NSString) as? UIImage {
+            let response = DetailModule.Detail.Response(image: cachedImage)
+            completion(.success(response))
+        } else {
+            let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+                guard let self = self else { return }
+                if let error = error {
+                    completion(.failure(error))
                 }
-            } catch {
-                completion(.failure(NetworkError.decodingError))
+                
+                guard let data = data else {
+                    completion(.failure(NetworkError.dataNil))
+                    return
+                }
+                
+                do {
+                    let dataImages = try JSONDecoder().decode(ImageNetworkWorkerModel.self, from: data)
+                    if let imageURL = dataImages.results.first {
+                        self.downloadImage(from: imageURL) { result in
+                            switch result {
+                            case .success(let image):
+                                self.imageCache.setObject(image, forKey: urlString as NSString)
+                                let response = DetailModule.Detail.Response(image: image)
+                                completion(.success(response))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                            
+                        }
+                    } else {
+                        completion(.failure(NetworkError.invalideURL))
+                    }
+                } catch {
+                    completion(.failure(NetworkError.decodingError))
+                }
             }
+            
+            task.resume()
         }
-        
-        task.resume()
     }
     
     private func downloadImage(from url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
