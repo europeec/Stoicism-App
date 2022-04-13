@@ -8,6 +8,7 @@ protocol DetailModuleDisplayLogic: AnyObject {
 final class DetailModuleViewController: UIViewController, DetailModuleDisplayLogic {
     private enum Constant {
         static let padding: CGFloat = 10
+        static let imageCornerRaduis: CGFloat = 20
     }
 
     var interactor: DetailModuleBusinessLogic?
@@ -16,12 +17,12 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleToFill
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        blurView.frame = imageView.frame
-        imageView.addSubview(blurView)
+        imageView.addSubview(blurredView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    private lazy var blurredView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterialDark))
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -97,10 +98,12 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
                                               constant: -Constant.padding),
 
             quoteView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor,
-                                             constant: -2 * Constant.padding)
+                                             constant: -4 * Constant.padding)
             
         ])
         
+        backgroundImageView.frame = view.bounds
+        blurredView.frame = backgroundImageView.frame
         imageView.center = view.center
         quoteView.center = view.center
     }
@@ -116,9 +119,15 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
         let image = viewModel.image
         let quote = viewModel.quote
         
-        backgroundImageView.image = image
-        imageView.image = image
-        quoteView.displayQuote(quote)
+        let isDark = image.isDark
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.blurredView.effect = UIBlurEffect(style: isDark ? .systemMaterialDark : .systemMaterialLight)
+            self.backgroundImageView.image = image
+            self.imageView.image = image
+            self.quoteView.displayQuote(quote, blurredBackground: true)
+        }
     }
     
     func loading() {

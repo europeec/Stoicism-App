@@ -27,6 +27,7 @@
 		2CAF7C842806367C007B4817 /* DetailModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7E2806367C007B4817 /* DetailModuleViewController.swift */; };
 		2CAF7C852806367C007B4817 /* DetailModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C7F2806367C007B4817 /* DetailModuleInteractor.swift */; };
 		2CAF7C8728063BE4007B4817 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C8628063BE4007B4817 /* NetworkError.swift */; };
+		2CAF7C892806CE70007B4817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C882806CE70007B4817 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		2CAF7C7E2806367C007B4817 /* DetailModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleViewController.swift; sourceTree = "<group>"; };
 		2CAF7C7F2806367C007B4817 /* DetailModuleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleInteractor.swift; sourceTree = "<group>"; };
 		2CAF7C8628063BE4007B4817 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		2CAF7C882806CE70007B4817 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				2CAF7C7628061166007B4817 /* QuoteView.swift */,
 				2CAF7C8628063BE4007B4817 /* NetworkError.swift */,
+				2CAF7C882806CE70007B4817 /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CAF7C8728063BE4007B4817 /* NetworkError.swift in Sources */,
+				2CAF7C892806CE70007B4817 /* Extensions.swift in Sources */,
 				2CAF7C5A2805CB8B007B4817 /* ViewController.swift in Sources */,
 				2CAF7C7728061166007B4817 /* QuoteView.swift in Sources */,
 				2CAF7C812806367C007B4817 /* DetailModuleWorker.swift in Sources */,
