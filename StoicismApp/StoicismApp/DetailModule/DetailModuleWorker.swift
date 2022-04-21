@@ -10,7 +10,12 @@ struct ImageNetworkWorkerModel: Decodable {
     }
 }
 
-final class DetailModuleWorker {
+protocol DetailModuleNetworkLogic {
+    func downloadImage(request: DetailModule.Detail.Request,
+                       completion: @escaping(Result<DetailModule.Detail.Response, Error>) -> Void)
+}
+
+final class DetailModuleWorker: DetailModuleNetworkLogic {
     private enum Constant {
         static let urlString = "https://imsea.herokuapp.com/api/1?q="
     }
@@ -30,7 +35,9 @@ final class DetailModuleWorker {
         
         if let cachedImage = self.imageCache.object(forKey: urlString as NSString) as? UIImage {
             let response = DetailModule.Detail.Response(image: cachedImage)
-            completion(.success(response))
+            DispatchQueue.main.async {
+                completion(.success(response))
+            }
         } else {
             let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
                 guard let self = self else { return }

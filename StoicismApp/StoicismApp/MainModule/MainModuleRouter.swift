@@ -17,6 +17,7 @@ final class MainModuleRouter: NSObject, MainModuleRoutingLogic, MainModuleDataPa
         let detailViewController = DetailModuleViewController()
         guard var destinationDataStore = detailViewController.router?.dataStore else { return }
         destinationDataStore.quote = quote
+        print(detailViewController)
         viewController?.present(detailViewController, animated: true)
     }
 }

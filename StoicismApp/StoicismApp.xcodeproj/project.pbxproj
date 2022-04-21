@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C99FDF1281170E50082BB77 /* StoicismAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99FDF0281170E50082BB77 /* StoicismAppTests.swift */; };
+		2C99FDF8281171140082BB77 /* MainModuleInteracorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99FDF7281171140082BB77 /* MainModuleInteracorTests.swift */; };
+		2C99FDFE2811806D0082BB77 /* MainModulePreseneterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99FDFD2811806D0082BB77 /* MainModulePreseneterTest.swift */; };
+		2C99FE0628118FFC0082BB77 /* DetailModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99FE0528118FFC0082BB77 /* DetailModuleInteractorTests.swift */; };
+		2C99FE09281196E30082BB77 /* DetailModulePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99FE08281196E30082BB77 /* DetailModulePresenterTests.swift */; };
 		2CAF7C562805CB8B007B4817 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C552805CB8B007B4817 /* AppDelegate.swift */; };
 		2CAF7C582805CB8B007B4817 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C572805CB8B007B4817 /* SceneDelegate.swift */; };
 		2CAF7C5A2805CB8B007B4817 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C592805CB8B007B4817 /* ViewController.swift */; };
@@ -30,7 +35,23 @@
 		2CAF7C892806CE70007B4817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAF7C882806CE70007B4817 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C99FDF2281170E50082BB77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CAF7C4A2805CB8B007B4817 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CAF7C512805CB8B007B4817;
+			remoteInfo = StoicismApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2C99FDEE281170E50082BB77 /* StoicismAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoicismAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C99FDF0281170E50082BB77 /* StoicismAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoicismAppTests.swift; sourceTree = "<group>"; };
+		2C99FDF7281171140082BB77 /* MainModuleInteracorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleInteracorTests.swift; sourceTree = "<group>"; };
+		2C99FDFD2811806D0082BB77 /* MainModulePreseneterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModulePreseneterTest.swift; sourceTree = "<group>"; };
+		2C99FE0528118FFC0082BB77 /* DetailModuleInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleInteractorTests.swift; sourceTree = "<group>"; };
+		2C99FE08281196E30082BB77 /* DetailModulePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModulePresenterTests.swift; sourceTree = "<group>"; };
 		2CAF7C522805CB8B007B4817 /* StoicismApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoicismApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAF7C552805CB8B007B4817 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CAF7C572805CB8B007B4817 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C99FDEB281170E50082BB77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CAF7C4F2805CB8B007B4817 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,10 +95,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C99FDEF281170E50082BB77 /* StoicismAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C99FE07281190000082BB77 /* DetailModule */,
+				2C99FDF0281170E50082BB77 /* StoicismAppTests.swift */,
+				2C99FDF9281175F70082BB77 /* MainModule */,
+			);
+			path = StoicismAppTests;
+			sourceTree = "<group>";
+		};
+		2C99FDF9281175F70082BB77 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				2C99FDF7281171140082BB77 /* MainModuleInteracorTests.swift */,
+				2C99FDFD2811806D0082BB77 /* MainModulePreseneterTest.swift */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		2C99FE07281190000082BB77 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				2C99FE0528118FFC0082BB77 /* DetailModuleInteractorTests.swift */,
+				2C99FE08281196E30082BB77 /* DetailModulePresenterTests.swift */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
 		2CAF7C492805CB8B007B4817 = {
 			isa = PBXGroup;
 			children = (
 				2CAF7C542805CB8B007B4817 /* StoicismApp */,
+				2C99FDEF281170E50082BB77 /* StoicismAppTests */,
 				2CAF7C532805CB8B007B4817 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				2CAF7C522805CB8B007B4817 /* StoicismApp.app */,
+				2C99FDEE281170E50082BB77 /* StoicismAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +197,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C99FDED281170E50082BB77 /* StoicismAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C99FDF4281170E50082BB77 /* Build configuration list for PBXNativeTarget "StoicismAppTests" */;
+			buildPhases = (
+				2C99FDEA281170E50082BB77 /* Sources */,
+				2C99FDEB281170E50082BB77 /* Frameworks */,
+				2C99FDEC281170E50082BB77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C99FDF3281170E50082BB77 /* PBXTargetDependency */,
+			);
+			name = StoicismAppTests;
+			productName = StoicismAppTests;
+			productReference = 2C99FDEE281170E50082BB77 /* StoicismAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2CAF7C512805CB8B007B4817 /* StoicismApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CAF7C662805CB8C007B4817 /* Build configuration list for PBXNativeTarget "StoicismApp" */;
@@ -166,6 +242,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					2C99FDED281170E50082BB77 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 2CAF7C512805CB8B007B4817;
+					};
 					2CAF7C512805CB8B007B4817 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -185,11 +265,19 @@
 			projectRoot = "";
 			targets = (
 				2CAF7C512805CB8B007B4817 /* StoicismApp */,
+				2C99FDED281170E50082BB77 /* StoicismAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C99FDEC281170E50082BB77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CAF7C502805CB8B007B4817 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,6 +291,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C99FDEA281170E50082BB77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C99FDFE2811806D0082BB77 /* MainModulePreseneterTest.swift in Sources */,
+				2C99FDF8281171140082BB77 /* MainModuleInteracorTests.swift in Sources */,
+				2C99FE09281196E30082BB77 /* DetailModulePresenterTests.swift in Sources */,
+				2C99FE0628118FFC0082BB77 /* DetailModuleInteractorTests.swift in Sources */,
+				2C99FDF1281170E50082BB77 /* StoicismAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CAF7C4E2805CB8B007B4817 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +330,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C99FDF3281170E50082BB77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2CAF7C512805CB8B007B4817 /* StoicismApp */;
+			targetProxy = 2C99FDF2281170E50082BB77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2CAF7C5B2805CB8B007B4817 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -250,6 +358,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2C99FDF5281170E50082BB77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P3TN634878;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = europeec.StoicismAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StoicismApp.app/StoicismApp";
+			};
+			name = Debug;
+		};
+		2C99FDF6281170E50082BB77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P3TN634878;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = europeec.StoicismAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StoicismApp.app/StoicismApp";
+			};
+			name = Release;
+		};
 		2CAF7C642805CB8C007B4817 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C99FDF4281170E50082BB77 /* Build configuration list for PBXNativeTarget "StoicismAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C99FDF5281170E50082BB77 /* Debug */,
+				2C99FDF6281170E50082BB77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2CAF7C4D2805CB8B007B4817 /* Build configuration list for PBXProject "StoicismApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

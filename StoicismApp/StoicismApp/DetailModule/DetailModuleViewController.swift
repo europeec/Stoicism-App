@@ -50,7 +50,8 @@ final class DetailModuleViewController: UIViewController, DetailModuleDisplayLog
     
     private func setup() {
         let viewController = self
-        let interactor = DetailModuleInteractor()
+        let worker = DetailModuleWorker.shared
+        let interactor = DetailModuleInteractor(worker: worker)
         let presenter = DetailModulePresenter()
         let router = DetailModuleRouter()
         viewController.interactor = interactor

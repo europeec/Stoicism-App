@@ -14,7 +14,11 @@ final class DetailModuleInteractor: DetailModuleBusinessLogic, DetailModuleDataS
     var quote: Quote = .init(author: "", text: "")
     
     var presenter: DetailModulePresentationLogic?
-    private let worker = DetailModuleWorker.shared
+    var worker: DetailModuleNetworkLogic
+    
+    init(worker: DetailModuleNetworkLogic) {
+        self.worker = worker
+    }
 
     func downloadImage(request: DetailModule.Detail.Request) {
         guard let presenter = presenter else { return }
@@ -26,7 +30,7 @@ final class DetailModuleInteractor: DetailModuleBusinessLogic, DetailModuleDataS
             case .success(let response):
                 presenter.presentImage(response: response, quote: self.quote)
             case .failure(let error):
-                fatalError(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }

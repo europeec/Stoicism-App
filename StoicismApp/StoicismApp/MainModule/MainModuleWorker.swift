@@ -1,6 +1,10 @@
 import UIKit
 
-final class MainModuleWorker {
+protocol MainModuleNetworkLogic {
+    func getQuoute(completion: @escaping (Result<MainModule.ShowQuote.Response, Error>) -> Void)
+}
+
+final class MainModuleWorker: MainModuleNetworkLogic {
     private enum Constant {
         static let urlString = "https://api.themotivate365.com/stoic-quote"
     }
@@ -10,17 +14,26 @@ final class MainModuleWorker {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                    return
+                }
             }
             
             guard let data = data else {
-                completion(.failure(NetworkError.dataNil))
+                DispatchQueue.main.async {
+                    completion(.failure(NetworkError.dataNil))
+                }
+
                 return
             }
             
             do {
                 let response = try JSONDecoder().decode(MainModule.ShowQuote.Response.self, from: data)
-                completion(.success(response))
+                DispatchQueue.main.async {
+                    completion(.success(response))
+                    return
+                }
             } catch {
                 completion(.failure(NetworkError.decodingError))
             }
